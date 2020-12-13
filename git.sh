@@ -11,7 +11,6 @@ cur_branch=`git branch |grep "*" | awk -F " " '{print $2}'`;
 # push操作
 gpush(){
     if [ -z "$param2" ]  ;then 
-        echo 111;
         (git push origin $cur_branch)
     else 
         (git push origin $param2 $param3 $param4 $param5)
