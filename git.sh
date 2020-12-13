@@ -10,8 +10,8 @@ cur_branch=`git branch |grep "*" | awk -F " " '{print $2}'`;
 
 # push操作
 gpush(){
-    if [[  -n $param2 ]]  ;then 
-        (git pull origin $cur_branch)
+    if [ -z "$param2" ]  ;then 
+        echo 111;
         (git push origin $cur_branch)
     else 
         (git push origin $param2 $param3 $param4 $param5)
@@ -20,7 +20,7 @@ gpush(){
 
 # pull操作
 gpull(){
-    if [[  -n $param2 ]]  ;then 
+    if [[ -z $param2 ]]  ;then 
         (git pull origin $cur_branch)
     else 
         (git pull origin $param2 $param3 $param4 $param5)
