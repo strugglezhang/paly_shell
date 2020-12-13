@@ -8,39 +8,47 @@ param5=$5
 cur_branch=`git branch |grep "*" | awk -F " " '{print $2}'`;
 
 
+# push操作
 gpush(){
     if [[  -n $param2 ]]  ;then 
+        (git pull origin $cur_branch)
         (git push origin $cur_branch)
     else 
-        (git push origin $param2)
+        (git push origin $param2 $param3 $param4 $param5)
     fi
 }
 
+# pull操作
 gpull(){
     if [[  -n $param2 ]]  ;then 
         (git pull origin $cur_branch)
     else 
-        (git pull origin $param2)
+        (git pull origin $param2 $param3 $param4 $param5)
     fi
 }
 
+# branch 操作
 gb(){
-    (git branch $param2)
+    (git branch $param2 $param3 $param4 $param5)
 }
 
+# checkout 操作
 gco(){
-    (git checkout $param2)
+    (git checkout $param2 $param3 $param4 $param5)
 }
 
+# merge 操作
 gm(){
-    (git merge $param2)
+    (git merge $param2 $param3 $param4 $param5)
 }
 
+# log 操作
 glog(){
     (git log)
 
 }
 
+# add 操作
 gadd(){
     if [[  -n $param2 ]]  ;then 
         (git add $param2)
@@ -49,12 +57,17 @@ gadd(){
     fi
 }
 
+# commit 操作
 gcm(){
     (git commit -m  "$param2")
 }
 
 gtag(){
     (git tag -l)
+}
+
+gst(){
+     (git status)
 }
 
 # 接受命令行参数

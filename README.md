@@ -1,2 +1,2 @@
-# paly_shell
-play the shell for me
+## play shell
+. 没事干 吓鼓捣
