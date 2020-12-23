@@ -10,18 +10,18 @@ cur_branch=`git branch |grep "*" | awk -F " " '{print $2}'`;
 
 # push操作
 gpush(){
-    if [ -z "$param2" ]  ;then 
+    if [ -z "$param2" ]  ;then
         (git push origin $cur_branch)
-    else 
+    else
         (git push origin $param2 $param3 $param4 $param5)
     fi
 }
 
 # pull操作
 gpull(){
-    if [[ -z $param2 ]]  ;then 
+    if [[ -z $param2 ]]  ;then
         (git pull origin $cur_branch)
-    else 
+    else
         (git pull origin $param2 $param3 $param4 $param5)
     fi
 }
@@ -49,10 +49,10 @@ glog(){
 
 # add 操作
 gadd(){
-    if [[  -n $param2 ]]  ;then 
-        (git add $param2)
-    else 
+    if [  -z $param2 ]  ;then
         (git add .)
+    else
+        (git add $param2)
     fi
 }
 
@@ -97,6 +97,7 @@ printf '********************************************************\n';
 printf '********************************************************\n';
 printf '**** Show Branch And Date                           ****\n';
 
+# 假装是美化了输出
 echo "**** Date $currTime                       ****"
 prePrint="**** @Current Branch ";
 midPrint="${cur_branch}   ";
